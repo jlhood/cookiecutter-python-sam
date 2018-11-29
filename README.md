@@ -7,11 +7,13 @@ In the same spirit as [cookiecutter-aws-sam-python](https://github.com/aws-sampl
 1. Lambda functions use python 3.6.
 1. Lambda functions have X-Ray enabled.
 1. pipenv is used for dependency management.
+1. VS Code is used for editing.
 1. flake8 and pydocstyle static analysis checks are run on Lambda function code.
 1. Lambda function code is unit tested with an enforced code line coverage minimum (85%).
 1. cfn-lint is run to validate SAM template.
 1. Lambda functions support configurable log level via template parameters and environment variables.
 1. SAM CLI is used for package/local test/deploy.
+1. App is published to AWS Serverless Application Repository (SAR) and instructions for deploying are via SAR.
 1. Makefile is included with the following targets:
     1. `clean` - remove build artifacts.
     1. `bootstrap` - run once after initializing from cookiecutter to lock and install dependencies.
@@ -25,17 +27,23 @@ In the same spirit as [cookiecutter-aws-sam-python](https://github.com/aws-sampl
 Here's my flow for starting a new SAM app. Note, I use a Macbook and have not tested this template on anything else. Theoretically, it should work on any *nix OS, maybe with minor tweaks.
 
 1. Create a [new repository](https://github.com/new) in GitHub.
-    1. Check the box to create a README.
-    1. Do NOT have GitHub generate a .gitignore.
-    1. DO have GitHub generate a LICENSE file.
-1. Clone the new GitHub repo to your workspace.
-1. cd into the cloned repo directory.
+    1. For the sake of this example, let's say you decided to name it my-sam-app.
+    1. Do NOT have GitHub automatically create any files, e.g., README, etc.
+1. cd to your workspace.
 1. `sam init --location gh:jlhood/cookiecutter-python-sam`
-    1. When prompted for project name, enter `tmp`
-1. `mv tmp/* tmp/.* . && rmdir tmp`
+    1. When prompted for project name, enter the name of your GitHub repo, e.g., my-sam-app.
+1. `cd my-sam-app`
 1. `make bootstrap`
+1. `git init`
 1. `git add .`
 1. `git commit -m 'Initial app from template'`
+1. `git remote add origin <GitHub repo URL>`
+1. `git push -u origin master`
+1. Add LICENSE file through GitHub UI
+    1. Click "Create new file"
+    1. Name the new file LICENSE
+    1. Click "Choose a license template"
+    1. Follow the steps to create the license file from a template
 
 Now start making changes and testing using `sam local` or deploy it like this:
 
