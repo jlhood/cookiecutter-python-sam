@@ -32,20 +32,20 @@ Here's my flow for starting a new SAM app. Note, I use a Macbook and have not te
 1. cd to your workspace.
 1. `sam init --location gh:jlhood/cookiecutter-python-sam`
     1. When prompted for project name, enter the name of your GitHub repo, e.g., my-sam-app.
-1. `cd my-sam-app`
-1. `make bootstrap`
-1. `git init`
-1. `git add .`
-1. `git commit -m 'Initial app from template'`
-1. `git remote add origin <GitHub repo URL>`
-1. `git push -u origin master`
+    1. Choose 'y' for push_to_github.
+    1. Answer remaining questions.
+1. The cookiecutter template will automatically
+    1. initialize the app from the template
+    1. bootstrap dependencies
+    1. initialize git and commit the app template changes
+    1. push the changes to the GitHub remote repo
 1. Add LICENSE file through GitHub UI
     1. Click "Create new file"
     1. Name the new file LICENSE
     1. Click "Choose a license template"
-    1. Follow the steps to create the license file from a template
+    1. Follow the steps to create and commit the LICENSE file from a template
 
-Now start making changes and testing using `sam local` or deploy it like this:
+Now you're ready to start making changes and testing using `sam local` or deploy it like this:
 
 1. `PACKAGE_BUCKET=my-bucket make package`
 1. `sam deploy --template-file dist/packaged-template.yml --stack-name my-stack --capabilities CAPABILITY_IAM`
