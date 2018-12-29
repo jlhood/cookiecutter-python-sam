@@ -10,4 +10,4 @@ LOG = lambdalogging.getLogger(__name__)
 
 def handler(event, context):
     """Lambda function handler."""
-    LOG.info('Received event: {}', event)
+    LOG.info('Received event: %s', event)

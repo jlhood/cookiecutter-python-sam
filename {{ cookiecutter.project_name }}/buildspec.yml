@@ -5,9 +5,8 @@ phases:
     - make init
   build:
     commands:
-    - make
     - make package
 artifacts:
   files:
-    - dist/packaged-template.yml
+    - .aws-sam/packaged-template.yml
   discard-paths: yes

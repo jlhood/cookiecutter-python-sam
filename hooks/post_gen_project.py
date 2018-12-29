@@ -13,6 +13,7 @@ HINT = "\x1b[3;33m"
 def main():
     project_name = '{{ cookiecutter.project_name }}'
     push_to_github = '{{ cookiecutter.push_to_github }}' == 'y'
+    git_fullname = '{{ cookiecutter.git_fullname }}'
     github_username = '{{ cookiecutter.github_username }}'
     github_email = '{{ cookiecutter.github_email }}'
 
@@ -24,6 +25,8 @@ def main():
     print(INFO + "Initializing git repo." + TERMINATOR)
     subprocess.call(['git', 'init'])
 
+    print(INFO + "Configuring user.name to {}".format(git_fullname) + TERMINATOR)
+    subprocess.call(['git', 'config', 'user.name', git_fullname])
     print(INFO + "Configuring user.email to {}".format(github_email) + TERMINATOR)
     subprocess.call(['git', 'config', 'user.email', github_email])
 

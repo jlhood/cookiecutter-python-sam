@@ -10,17 +10,18 @@ In the same spirit as [cookiecutter-aws-sam-python](https://github.com/aws-sampl
 1. VS Code is used for editing.
 1. flake8 and pydocstyle static analysis checks are run on Lambda function code.
 1. Lambda function code is unit tested with an enforced code line coverage minimum (85%).
-1. cfn-lint is run to validate SAM template.
-1. Lambda functions support configurable log level via template parameters and environment variables.
-1. SAM CLI is used for package/local test/deploy.
-1. App is published to AWS Serverless Application Repository (SAR) and instructions for deploying are via SAR.
+1. cfn-lint is run to validate the SAM template.
+1. Lambda functions support runtime-configurable log level via template parameters and environment variables.
+1. SAM CLI is used for build/package/local test/deploy/publish.
+1. App is published to the AWS Serverless Application Repository (SAR).
 1. Makefile is included with the following targets:
     1. `clean` - remove build artifacts.
     1. `bootstrap` - run once after initializing from cookiecutter to lock and install dependencies.
     1. `init` - used by CI build to install locked dependencies.
-    1. `compile` - run linters on python code and SAM template.
+    1. `compile` - run linters on python code and SAM template, run sam build.
     1. `build` - default target. Executes `compile` target.
     1. `package` - packages dependencies and uploads to S3, outputting a packaged template for deployment.
+    1. `publish` - create/update corresponding app in AWS SAR.
 
 ## Using the cookiecutter template
 
@@ -45,10 +46,14 @@ Here's my flow for starting a new SAM app. Note, I use a Macbook and have not te
     1. Click "Choose a license template"
     1. Follow the steps to create and commit the LICENSE file from a template
 
-Now you're ready to start making changes and testing using `sam local` or deploy it like this:
+Now you're ready to start making changes and testing using `sam local`:
+
+1. `pipenv run sam local invoke --no-event`
+
+or deploy it like this:
 
 1. `PACKAGE_BUCKET=my-bucket make package`
-1. `sam deploy --template-file dist/packaged-template.yml --stack-name my-stack --capabilities CAPABILITY_IAM`
+1. `pipenv run sam deploy --template-file .aws-sam/packaged-template.yml --stack-name my-stack --capabilities CAPABILITY_IAM`
 
 ## CI Setup
 
