@@ -30,7 +30,7 @@ Resources:
     Properties:
       CodeUri: src/
       Handler: myfunction.handler
-      Runtime: python3.6
+      Runtime: python3.7
       Tracing: Active
       Timeout: 60
       Environment:

@@ -4,7 +4,7 @@ In the same spirit as [cookiecutter-aws-sam-python](https://github.com/aws-sampl
 
 ## Features/Opinions
 
-1. Lambda functions use python 3.6.
+1. Lambda functions use python 3.7.
 1. Lambda functions have X-Ray enabled.
 1. pipenv is used for dependency management.
 1. VS Code is used for editing.
@@ -48,6 +48,7 @@ Here's my flow for starting a new SAM app. Note, I use a Macbook and have not te
 
 Now you're ready to start making changes and testing using `sam local`:
 
+1. `make`
 1. `pipenv run sam local invoke --no-event`
 
 or deploy it like this:
