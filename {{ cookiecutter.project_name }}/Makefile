@@ -23,6 +23,7 @@ PYTHON := $(shell /usr/bin/which python$(PY_VERSION))
 .DEFAULT_GOAL := build
 
 clean:
+	rm -f $(SRC_DIR)/requirements.txt
 	rm -rf $(SAM_DIR)
 
 # used once just after project creation to lock and install dependencies
