@@ -12,7 +12,7 @@ Metadata:
     LicenseUrl: ../../LICENSE
     ReadmeUrl: ../../README.md
     Labels: [serverless]
-    HomepageUrl: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+    HomePageUrl: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
     # Update the semantic version and run sam publish to publish a new version of your app
     SemanticVersion: 0.0.1
     # best practice is to use git tags for each release and link to the version tag as your source code URL
