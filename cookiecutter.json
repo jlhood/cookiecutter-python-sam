@@ -1,7 +1,7 @@
 {
     "project_name": "Name of the project",
     "push_to_github": "y",
-    "git_fullname": "James Hood",
-    "github_username": "jlhood",
-    "github_email": "james@jlhood.com"
+    "git_fullname": "Jane Coder",
+    "github_username": "janecoder",
+    "github_email": "janecoder@example.com"
 }
