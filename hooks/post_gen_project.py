@@ -31,7 +31,7 @@ def main():
     subprocess.call(['git', 'config', 'user.email', github_email])
 
     subprocess.call(['git', 'add', '.'])
-    subprocess.call(['git', 'commit', '-m', 'Initial app from template'])
+    subprocess.call(['git', 'commit', '-m', 'Initial app from template\n\nCreated with https://github.com/jlhood/cookiecutter-python-sam'])
 
     if push_to_github:
         print(INFO + "Pushing to GitHub." + TERMINATOR)
