@@ -34,6 +34,7 @@ bootstrap:
 
 # used by CI build to install dependencies
 init:
+	$(PYTHON) -m $(PIP) install aws-sam-cli --user
 	$(PYTHON) -m $(PIP) install pipenv --user
 	pipenv sync --dev
 
@@ -43,12 +44,12 @@ compile:
 	pipenv run cfn-lint template.yml
 	pipenv run py.test --cov=$(SRC_DIR) --cov-fail-under=85 -vv test/unit
 	pipenv lock --requirements > $(SRC_DIR)/requirements.txt
-	pipenv run sam build
+	sam build
 
 build: compile
 
 package: compile
-	pipenv run sam package --s3-bucket $(PACKAGE_BUCKET) --output-template-file $(SAM_DIR)/packaged-template.yml
+	sam package --s3-bucket $(PACKAGE_BUCKET) --output-template-file $(SAM_DIR)/packaged-template.yml
 
 publish: package
-	pipenv run sam publish --template $(SAM_DIR)/packaged-template.yml
+	sam publish --template $(SAM_DIR)/packaged-template.yml

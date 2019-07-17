@@ -17,13 +17,15 @@ In the same spirit as [cookiecutter-aws-sam-python](https://github.com/aws-sampl
 1. Makefile is included with the following targets:
     1. `clean` - remove build artifacts.
     1. `bootstrap` - run once after initializing from cookiecutter to lock and install dependencies.
-    1. `init` - used by CI build to install locked dependencies.
+    1. `init` - used by CI build to install pre-requisites and locked dependencies.
     1. `compile` - run linters on python code and SAM template, run sam build.
     1. `build` - default target. Executes `compile` target.
     1. `package` - packages dependencies and uploads to S3, outputting a packaged template for deployment.
     1. `publish` - create/update corresponding app in AWS SAR.
 
 ## Using the cookiecutter template
+
+**NOTE:** This template assumes you have SAM CLI installed and the `sam` command is on your path. SAM CLI installation instructions can be found [here](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html).
 
 Here's my flow for starting a new SAM app. Note, I use a Macbook and have not tested this template on anything else. Theoretically, it should work on any *nix OS, maybe with minor tweaks.
 
@@ -49,12 +51,12 @@ Here's my flow for starting a new SAM app. Note, I use a Macbook and have not te
 Now you're ready to start making changes and testing using `sam local`:
 
 1. `make`
-1. `pipenv run sam local invoke --no-event`
+1. `sam local invoke --no-event`
 
 or deploy it like this:
 
 1. `PACKAGE_BUCKET=my-bucket make package`
-1. `pipenv run sam deploy --template-file .aws-sam/packaged-template.yml --stack-name my-stack --capabilities CAPABILITY_IAM`
+1. `sam deploy --template-file .aws-sam/packaged-template.yml --stack-name my-stack --capabilities CAPABILITY_IAM`
 
 ## CI Setup
 
