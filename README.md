@@ -4,7 +4,7 @@ In the same spirit as [cookiecutter-aws-sam-python](https://github.com/aws-sampl
 
 ## Features/Opinions
 
-1. Lambda functions use python 3.7.
+1. Lambda functions use python 3.8.
 1. Lambda functions have X-Ray enabled.
 1. pipenv is used for dependency management.
 1. VS Code is used for editing.
